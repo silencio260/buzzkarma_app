@@ -34,9 +34,12 @@ class OfferApi {
           urlToImage: element['image'],
           offerUrl: element["link"] + userId,
           ranking: element['ranking'],
+          disabled: element['disabled'],
         );
         print('====================made');
-        offers.add(offer);
+        if (offer.disabled != true) {
+          offers.add(offer);
+        }
       });
       print(offers[0].offerUrl);
       offers.sort((a, b) {

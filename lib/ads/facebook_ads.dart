@@ -29,8 +29,8 @@ void InitFacebookAds() {
 //}
 
 Widget showNativeAds() {
-  return Container();
-  FacebookNativeAd(
+  //return Container();
+  return FacebookNativeAd(
     placementId: placementId,
     adType: NativeAdType.NATIVE_AD,
     width: double.infinity,

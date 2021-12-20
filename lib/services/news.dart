@@ -87,7 +87,10 @@ class News {
           content: description, //element["content"],
           articleUrl: element["url"],
         );
-        news.add(article);
+
+        if (image != '') {
+          news.add(article);
+        }
       }
     });
 //    }
@@ -113,6 +116,6 @@ class News {
     news.add(article);
     }
     });
-    //    }
+    //}
 
  ********************/

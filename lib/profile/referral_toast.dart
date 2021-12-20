@@ -12,7 +12,7 @@ EnerReferralCode(context, token) {
 
   Future<dynamic> saveReferral() async {
     var body = jsonEncode(<String, String>{
-      "referralCode": referralController.text.trim(),
+      "referralCode": referralController.text.trim().toLowerCase(),
     });
 
     print('=============================');
@@ -24,33 +24,39 @@ EnerReferralCode(context, token) {
     Navigator.of(context, rootNavigator: true).pop();
   }
 
-  Alert(
+  showDialog(
       context: context,
-      title: "LOGIN",
-      content: Column(
-        children: <Widget>[
-          TextField(
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            'Enter your friend\'s refferal code and earn 2000 points',
+            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.normal),
+          ),
+          content: TextField(
             controller: referralController,
-            decoration: InputDecoration(
-              icon: Icon(Icons.account_circle),
-              labelText: 'Username',
+            textInputAction: TextInputAction.go,
+            keyboardType: TextInputType.numberWithOptions(),
+            decoration: InputDecoration(hintText: "Enter here..."),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text('Later'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-          ),
-        ],
-      ),
-      buttons: [
-        DialogButton(
-          onPressed: () => {saveReferral()},
-          child: Text(
-            "LOGIN",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        )
-      ]).show();
+            new FlatButton(
+              child: new Text('Submit'),
+              onPressed: () {
+                saveReferral();
+              },
+            )
+          ],
+        );
+      });
 }
 
-/*
- Alert(
+/*Alert(
       context: context,
       title: "LOGIN",
       content: Column(
@@ -73,4 +79,5 @@ EnerReferralCode(context, token) {
           ),
         )
       ]).show();
-      */
+
+*/

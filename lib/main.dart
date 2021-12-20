@@ -145,9 +145,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return [
       NewsPage(),
       OfferPage(),
-      SignIn(),
-//      RewardButton(),
       Profile(),
+      //SignIn(),
+      //RewardButton(),
     ];
   }
 
@@ -165,13 +165,13 @@ class _MyHomePageState extends State<MyHomePage> {
         activeColor: Colors.teal,
         inactiveColor: Colors.grey,
       ),
-      PersistentBottomNavBarItem(
+      /*PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
         title: ("Add"),
         activeColor: Colors.blueAccent,
         inactiveColor: Colors.grey,
         activeContentColor: Colors.blue,
-      ),
+      ), */
       PersistentBottomNavBarItem(
         icon: Icon(Icons.person_rounded),
         title: ("Profile"),

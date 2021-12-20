@@ -4,6 +4,8 @@ import 'package:transparent_image/transparent_image.dart';
 import './fade_route.dart';
 import './article_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:genrevibes/constants/constants.dart';
 
 class ArticleTile extends StatelessWidget {
   ArticleTile({
@@ -28,13 +30,24 @@ class ArticleTile extends StatelessWidget {
               ),
         ),
         thumbnail = article.urlToImage != null
-            ? ImagePlaceholder('No image.')
-//            FadeInImage.memoryNetwork(
-//                image: article.urlToImage,
-//                placeholder: kTransparentImage,
-//                fit: BoxFit.cover,
-//              )
-            : null, //ImagePlaceholder('No image.'),
+            ? FadeInImage.assetNetwork(
+                image: article.urlToImage,
+                placeholder: '', //kTransparentImage,
+                fit: BoxFit.cover,
+              )
+            : ImagePlaceholder('No image.'),
+
+        /* ? ImagePlaceholder('No image.')
+            : null,*/
+        //ImagePlaceholder('No image.'),
+
+        /* CachedNetworkImage(
+                width: 200,
+                height: 300,
+                //placeholder: (context, url) => CircularProgressIndicator(),
+                imageUrl: article.urlToImage,
+              ) */
+
         published = SizedBox.shrink(),
 //        published = Text(
 //          _timestamp(article.publshedAt),

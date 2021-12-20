@@ -29,10 +29,11 @@ const ktabLabelColor = Colors.white;
 
 Map<String, String> kheaders = {"x-auth-token": kTempToken};
 
-const kshareUrl = 'https://buzzbreak.news/';
+const kshareUrl = kserverUrl; //'https://buzzbreak.news/';
 const kfbUrl = 'https://facebook.com/101123275307099/';
 //'http://f05e538d7551.ngrok.io'; http://192.168.43.49:5000
-const kserverUrl = 'http://192.168.43.49:5000';
+const kserverUrl =
+    'https://fierce-ridge-81787.herokuapp.com'; //'http://192.168.43.49:5000'; //'https://fierce-ridge-81787.herokuapp.com';
 const kserver = '$kserverUrl/api';
 final kofferCategory = Uri.parse('${kserver}/offerwall/');
 final kcustomoffer = Uri.parse('${kserver}/offers/');

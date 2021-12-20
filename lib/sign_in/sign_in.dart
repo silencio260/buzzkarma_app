@@ -265,22 +265,6 @@ class _SignInState extends State<SignIn> {
                 buttonType: ButtonType.google,
                 onPressed: () => _handleGoogleSignIn(context),
               ),
-              FloatingActionButton(onPressed: () {
-                pushNewScreen(
-                  context,
-                  screen: TapJoy(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
-              }),
-              FloatingActionButton(onPressed: () {
-                pushNewScreen(
-                  context,
-                  screen: PollFish(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
-              })
             ],
           ),
         ),

@@ -62,6 +62,7 @@ class UserController extends GetxController {
     var activityHistory = userObj['activityHistory'];
     var playStoreReview = userObj['playStoreReview'];
     var country = userObj['country'];
+    var referrals = userObj['referrals'];
     var countyCode = userObj['countyCode'];
 
     print(userObj);
@@ -76,9 +77,11 @@ class UserController extends GetxController {
       referralCode: referralCode,
       activityHistory: activityHistory,
       allTimepoints: allTimePoints,
+      referrals: referrals,
       playStoreReview: playStoreReview,
     );
     print('===============out of parser');
+    print(referrals);
     print(user.value.email);
     update();
   }

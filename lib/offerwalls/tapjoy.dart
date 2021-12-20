@@ -1,7 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tapjoy/flutter_tapjoy.dart';
+import 'package:genrevibes/controller/user_controller.dart';
+import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 
+class TapjoyLite extends StatelessWidget {
+  var user = Get.put(UserController());
+
+  TapjoyLite() {
+    // connect to TapJoy, all fields are required.
+    TapJoyPlugin.shared.connect(
+      androidApiKey: "rvW2NsikRK649ZAR1fuBYwECUc67lgtZrHvJHNxRJwTsYCFQNWDyk4b3R1xe",
+//        iOSApiKey: "tap_joy_ios_api_key",
+      debug: !kReleaseMode,
+    );
+    // set userID
+//    TapJoyPlugin.shared.
+    TapJoyPlugin.shared.setUserID(userID: user.user.value.id);
+    // set contentState handler for each placement
+    myPlacement.setHandler(_placementHandler());
+    myPlacement.requestContent();
+    // add placements.
+    TapJoyPlugin.shared.addPlacement(myPlacement);
+  }
+
+  TJPlacement myPlacement = TJPlacement(name: "BuzzKarma");
+  String contentStateText = "";
+  String connectionState = "";
+  String iOSATTAuthResult = "";
+  String balance = "";
+
+  TJPlacementHandler _placementHandler() {
+    TJPlacementHandler handler = (contentState, name, error) {
+      switch (contentState) {
+        case TJContentState.contentRequestSuccess:
+          contentStateText = "Content Request Success for placement :  $name";
+          print('==============+++++++++++--------------_________________');
+          print(kReleaseMode);
+          myPlacement.showPlacement();
+          break;
+      }
+    };
+
+    return handler;
+  }
+
+//  Future<void> Test() async {
+//    await myPlacement.requestContent();
+//    print('*********************-----------------');
+//    await myPlacement.showPlacement();
+//  }
+
+  Widget Execute() {
+    //Test();
+    return Container();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Execute();
+  }
+}
+
+//////////////////////////////////////////
 class TapJoy extends StatefulWidget {
   @override
   _TapJoyState createState() => _TapJoyState();

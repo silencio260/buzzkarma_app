@@ -8,6 +8,7 @@ class User {
   String referralCode;
   String country;
   String countyCode;
+  List referrals;
   bool playStoreReview;
 
   User({
@@ -20,6 +21,7 @@ class User {
     this.activityHistory,
     this.allTimepoints,
     this.playStoreReview,
+    this.referrals,
     this.countyCode,
   });
 }

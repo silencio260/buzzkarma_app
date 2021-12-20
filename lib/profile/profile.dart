@@ -82,7 +82,7 @@ class Profile extends StatelessWidget {
                                   child: Column(
                                     children: <Widget>[
                                       Text(
-                                        "Points Total",
+                                        "Points",
                                         style: TextStyle(
                                           color: Colors.redAccent,
                                           fontSize: 16.0,
@@ -93,7 +93,7 @@ class Profile extends StatelessWidget {
                                         height: 5.0,
                                       ),
                                       Text(
-                                        profile.allTimepoints.toString(), //"5200",
+                                        profile.points.toString(), //"5200",
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.pinkAccent,
@@ -106,7 +106,7 @@ class Profile extends StatelessWidget {
                                   child: Column(
                                     children: <Widget>[
                                       Text(
-                                        "Income Today",
+                                        "Income",
                                         style: TextStyle(
                                           color: Colors.redAccent,
                                           fontSize: 16.0,
@@ -117,7 +117,7 @@ class Profile extends StatelessWidget {
                                         height: 5.0,
                                       ),
                                       Text(
-                                        profile.points.toString(), //"25.9k",
+                                        "\$${(profile.points / 100000).toString()}", //"25.9k",
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           color: Colors.pinkAccent,
@@ -130,7 +130,7 @@ class Profile extends StatelessWidget {
                                   child: Column(
                                     children: <Widget>[
                                       Text(
-                                        "Redeemed",
+                                        "Referrals",
                                         style: TextStyle(
                                           color: Colors.redAccent,
                                           fontSize: 16.0,
@@ -141,7 +141,8 @@ class Profile extends StatelessWidget {
                                         height: 5.0,
                                       ),
                                       Text(
-                                        "1300",
+                                        profile.referrals.length.toString(),
+                                        //"1300",
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           color: Colors.pinkAccent,
@@ -172,10 +173,23 @@ class Profile extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             new ListTile(
-                              title: new Text(
-                                profile.referralCode.toUpperCase(), //'BVCRY905',
-                                style: new TextStyle(fontSize: 20.0),
-                              ),
+//                              title: new Text(
+//                                profile.referralCode.toUpperCase(), //'BVCRY905',
+//                                style: new TextStyle(fontSize: 20.0),
+//                              ),
+                              title: SelectableText(profile.referralCode.toUpperCase(),
+                                  cursorColor: Colors.red,
+                                  showCursor: true,
+                                  toolbarOptions: ToolbarOptions(
+                                    copy: true,
+                                    selectAll: false,
+                                    cut: false,
+                                    paste: false,
+                                  ),
+                                  style: new TextStyle(fontSize: 20.0)
+                                  //style: Theme.of(context).(textTheme.body2)
+                                  ),
+
                               subtitle: Text(
                                   'your referral code refer a friend and earn 500 points and 5% of all there earnings'),
                             ),
@@ -277,11 +291,11 @@ class PaymentButton extends StatelessWidget {
 
 class EarnMore extends StatelessWidget {
   EarnMore(referralCode) {
-    this.referralCode = referralCode;
+    this.referralCode = referralCode.toString().toUpperCase();
 
     shareText =
         'I’m earning real cash by simply reading and watching in GenRevibes! Join me using my referral '
-        'link: ${kshareUrl}. To earn extra bonus, enter my referral code ${referralCode} after you start using it! '
+        'link: ${kshareUrl}. To earn extra bonus, enter my referral code ${this.referralCode} after you start using it! '
         'Download from Google Play to win big reward!';
   }
 
@@ -321,23 +335,15 @@ class EarnMore extends StatelessWidget {
       child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new ListTile(
-            leading: Icon(
-              Icons.thumb_up,
-              color: Colors.grey,
-              size: 25.0,
-            ), //FlutterLogo(),
-            title: new Text('Like our facebook page'),
-          ),
           GestureDetector(
-            onTap: () async => {await _shareWithFriends()},
+            onTap: () => ShowAdcolonyVideo(),
             child: new ListTile(
               leading: Icon(
-                Icons.ios_share,
+                Icons.tv,
                 color: Colors.grey,
                 size: 25.0,
-              ), //FlutterLogo(),
-              title: new Text('Share with Friends'),
+              ),
+              title: new Text('Watch Video - 250 points'),
             ),
           ),
           GestureDetector(
@@ -352,6 +358,25 @@ class EarnMore extends StatelessWidget {
             ),
           ),
           GestureDetector(
+            onTap: () async => {await _shareWithFriends()},
+            child: new ListTile(
+              leading: Icon(
+                Icons.ios_share,
+                color: Colors.grey,
+                size: 25.0,
+              ), //FlutterLogo(),
+              title: new Text('Share with Friends'),
+            ),
+          ),
+          new ListTile(
+            leading: Icon(
+              Icons.thumb_up,
+              color: Colors.grey,
+              size: 25.0,
+            ), //FlutterLogo(),
+            title: new Text('Like our facebook page'),
+          ),
+          GestureDetector(
             onTap: () => AppReview,
             child: new ListTile(
               leading: Icon(
@@ -360,17 +385,6 @@ class EarnMore extends StatelessWidget {
                 size: 25.0,
               ),
               title: new Text('Give A Review - 5000 points'),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => ShowAdcolonyVideo(),
-            child: new ListTile(
-              leading: Icon(
-                Icons.tv,
-                color: Colors.grey,
-                size: 25.0,
-              ),
-              title: new Text('Watch Video - 250 points'),
             ),
           ),
         ],

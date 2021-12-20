@@ -147,19 +147,21 @@ class _RewardButtonState extends State<RewardButton> with TickerProviderStateMix
           width: 70.0, //70.0,
           child: new CustomPaint(
             foregroundPainter: new MyPainter(
-                lineColor: Colors.white54,
-                completeColor: Colors.amber,
-                completePercent: animation.value, //percentage * animation.value,
-                width: 8.0),
+              lineColor: Colors.white54,
+              completeColor: Colors.amber,
+              completePercent: animation.value, //percentage * animation.value,
+              width: 4.0,
+            ),
             child: new Padding(
               padding: const EdgeInsets.all(0.0), //const EdgeInsets.all(8.0),
               child: new RaisedButton(
                   color: Colors.redAccent,
-                  splashColor: Colors.blueAccent,
+                  splashColor: Colors.lightBlueAccent,
                   shape: new CircleBorder(),
-                  child: new Text(
-                    "Click",
-                    style: TextStyle(color: Colors.white),
+                  child: new Icon(
+                    Icons.monetization_on,
+                    size: 35.0,
+                    color: Colors.white,
                   ),
                   elevation: 5.0,
                   onPressed: () {

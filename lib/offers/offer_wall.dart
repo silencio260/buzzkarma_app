@@ -46,6 +46,52 @@ class _OfferWallState extends State<OfferWall> {
     }
   }
 
+  Widget AddedOffers() {
+    if (widget.category == 'App') {
+      return InkWell(
+        onTap: () {
+          TapjoyLite tap = TapjoyLite();
+          tap.Execute();
+//                        pushNewScreen(
+//                          context,
+//                          screen: TapJoy(),
+//                          withNavBar: false, // OPTIONAL VALUE. True by default.
+//                          pageTransitionAnimation: PageTransitionAnimation.cupertino,
+//                        )
+        },
+        child: OfferCard(
+          theIcon: Icons.mic, //offerList[index].urlToImage,
+          theText: 'TapJoy',
+          subtitle: 'earn free points for playing games',
+          isNetworkImg: false,
+          localImg: AssetImage('images/tapjoy.png'),
+          //image: offerList[1].urlToImage,
+        ),
+      );
+    } else if (widget.category == 'Survey') {
+      return InkWell(
+        onTap: () => {
+          pushNewScreen(
+            context,
+            screen: PollFish(),
+            withNavBar: false, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
+          )
+        },
+        child: OfferCard(
+          theIcon: Icons.mic, //offerList[index].urlToImage,
+          theText: 'PollFish',
+          subtitle: 'earn free points for survey',
+          isNetworkImg: false,
+          localImg: AssetImage('images/pollfish.jpg'),
+          //image: offerList[0].urlToImage,
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
   @override
   void initState() {
     _loading = true;
@@ -70,39 +116,7 @@ class _OfferWallState extends State<OfferWall> {
                   children: <Widget>[
                     TopOffer(),
 
-                    InkWell(
-                      onTap: () => {
-                        pushNewScreen(
-                          context,
-                          screen: PollFish(),
-                          withNavBar: false, // OPTIONAL VALUE. True by default.
-                          pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                        )
-                      },
-                      child: OfferCard(
-                        theIcon: Icons.mic, //offerList[index].urlToImage,
-                        theText: 'PollFish',
-                        subtitle: 'earn free points for survey',
-                        image: offerList[0].urlToImage,
-                      ),
-                    ),
-
-                    InkWell(
-                      onTap: () => {
-                        pushNewScreen(
-                          context,
-                          screen: TapJoy(),
-                          withNavBar: false, // OPTIONAL VALUE. True by default.
-                          pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                        )
-                      },
-                      child: OfferCard(
-                        theIcon: Icons.mic, //offerList[index].urlToImage,
-                        theText: 'TapJoy',
-                        subtitle: 'earn free points for playing games',
-                        image: offerList[1].urlToImage,
-                      ),
-                    ),
+                    AddedOffers(),
 
                     /// News Article
                     Container(
@@ -134,13 +148,22 @@ class _OfferWallState extends State<OfferWall> {
 
 class OfferCard extends StatelessWidget {
   // default constructor
-  OfferCard({this.theIcon, this.theText, this.subtitle, this.image});
+  OfferCard({
+    this.theIcon,
+    this.theText,
+    this.subtitle,
+    this.image,
+    this.localImg,
+    this.isNetworkImg = true,
+  });
 
   // init variables
   final IconData theIcon;
   final String theText;
   final String subtitle;
   final String image;
+  final bool isNetworkImg;
+  final ImageProvider localImg;
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +177,7 @@ class OfferCard extends StatelessWidget {
             children: <Widget>[
               new ListTile(
                 leading: Image(
-                  image: NetworkImage(image),
+                  image: isNetworkImg ? NetworkImage(image) : localImg,
                   width: 70,
                   height: 201,
                 ),

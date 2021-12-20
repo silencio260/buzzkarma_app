@@ -4,6 +4,7 @@ class Offer {
   String urlToImage;
   String offerUrl;
   int ranking;
+  bool disabled;
 
   Offer({
     this.title,
@@ -11,5 +12,6 @@ class Offer {
     this.urlToImage,
     this.offerUrl,
     this.ranking,
+    this.disabled,
   });
 }

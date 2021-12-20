@@ -136,7 +136,7 @@ class _NewsListState extends State<NewsList> with RouteAware {
           PaypalGiveaway(),
 
           ///Top ADS Display
-//          showNativeAds(),
+          //showNativeAds(),
 //          FloatingActionButton(onPressed: () {
 //            setState(() {
 //              print('--------');
@@ -172,7 +172,7 @@ class _NewsListState extends State<NewsList> with RouteAware {
           ),
 
           ///Buttom ADS Display
-//          showNativeAds(),
+          //showNativeAds(),
         ],
       ),
     );
@@ -206,7 +206,7 @@ class _NewsListState extends State<NewsList> with RouteAware {
         body: SafeArea(
           child: _loading
               ? Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(), //Container(),
                 )
               : DisplayList(context),
         ),
@@ -214,14 +214,7 @@ class _NewsListState extends State<NewsList> with RouteAware {
     }
     return _loading
         ? Container(
-            //Center(
-            height: 100,
-            width: 100,
-            child: Container(
-              height: 20,
-              width: 20,
-              child: CircularProgressIndicator(),
-            ),
+            child: LinearProgressIndicator(),
           )
         : DisplayList(context);
   }
