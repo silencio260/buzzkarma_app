@@ -193,6 +193,7 @@ class _SignInState extends State<SignIn> {
             'public_profile',
             'email',
           ],
+          loginBehavior: LoginBehavior.webOnly,
         ); // by default we request the email and the public profile
         if (result.status == LoginStatus.success) {
           // you are logged

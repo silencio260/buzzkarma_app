@@ -87,6 +87,37 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: $$$$ change this to  !isExpired and implement conditions for isExpired = true
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222');
 
+    token = authBox.get('token');
+
+    var StartAuth = () => {
+          setState(() {
+            print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+            if (widget.doneAuth) {
+//            userController.fetchUser();
+              kshowLoginPage = false;
+            } else {
+              kshowLoginPage = true;
+            }
+          })
+        };
+
+    if (token == null) {
+      StartAuth();
+    } else {
+      isExpired = Jwt.isExpired(token);
+      if (isExpired == true) {
+        print('-------------------------------ISEXPIRED');
+        print(isExpired);
+        StartAuth();
+      } else {
+        setState(() {
+          kshowLoginPage = false;
+        });
+      }
+    }
+
+    /*
+
     if (!kDebugMode) {
       isExpired = Jwt.isExpired(kTempToken);
       if (isExpired) {
@@ -101,7 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
       } else {
         print('======== token expired');
       }
-    } else {
+    }
+
+    else {
       token = authBox.get('token');
       isExpired = token != null ? Jwt.isExpired(token) : isExpired;
       // Or || isExpired
@@ -125,6 +158,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@999');
     print(token);
+
+     */
   }
 
   @override
@@ -165,25 +200,12 @@ class _MyHomePageState extends State<MyHomePage> {
         activeColor: Colors.teal,
         inactiveColor: Colors.grey,
       ),
-      /*PersistentBottomNavBarItem(
-        icon: Icon(Icons.add),
-        title: ("Add"),
-        activeColor: Colors.blueAccent,
-        inactiveColor: Colors.grey,
-        activeContentColor: Colors.blue,
-      ), */
       PersistentBottomNavBarItem(
         icon: Icon(Icons.person_rounded),
         title: ("Profile"),
         activeColor: Colors.deepOrange,
         inactiveColor: Colors.grey,
       ),
-//      PersistentBottomNavBarItem(
-//        icon: Icon(Icons.settings),
-//        title: ("Settings"),
-//        activeColor: Colors.indigo,
-//        inactiveColor: Colors.grey,
-//      ),
     ];
   }
 
