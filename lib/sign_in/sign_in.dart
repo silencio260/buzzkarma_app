@@ -14,7 +14,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:genrevibes/main.dart';
 import 'package:genrevibes/services/detect_proxy.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genrevibes/reward_button/sound.dart';
+import 'email_auth/email_login.dart';
 
 /////////////
 import 'package:genrevibes/offerwalls/tapjoy.dart';
@@ -265,6 +265,16 @@ class _SignInState extends State<SignIn> {
               SignInButton(
                 buttonType: ButtonType.google,
                 onPressed: () => _handleGoogleSignIn(context),
+              ),
+              SignInButton(
+                btnColor: Colors.grey,
+                buttonType: ButtonType.mail,
+                onPressed: () => pushNewScreen(
+                  context,
+                  screen: LoginPage(),
+                  withNavBar: false, // OPTIONAL VALUE. True by default.
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                ),
               ),
             ],
           ),
