@@ -42,6 +42,9 @@ class PayoutHistory extends StatelessWidget {
                   },
                   itemBuilder: (context, index) {
                     var payout = controller.payouts[index];
+                    var paymentEmail = payout.paymentEmail == null || payout.paymentEmail.isEmpty
+                        ? ''
+                        : payout.paymentEmail;
 
                     changeColor(payout);
 
@@ -54,6 +57,7 @@ class PayoutHistory extends StatelessWidget {
                           ),
                         ),
                         subtitle: Text("${Jiffy(payout.date).fromNow()}."),
+                        //subtitle: Text("${Jiffy(payout.date).fromNow()}. \n" + paymentEmail),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,

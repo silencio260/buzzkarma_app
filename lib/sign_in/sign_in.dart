@@ -76,7 +76,7 @@ class _SignInState extends State<SignIn> {
     try {
       isProxy = false;
       var userData = await detectProxy();
-      if (userData['proxy'] == 'yes' && retryCounter >= 5) {
+      if (userData['proxy'] == 'yes' && retryCounter >= 3) {
         setState(() {
           isProxy = true;
           retryCounter += 1;

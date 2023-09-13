@@ -59,6 +59,7 @@ class PayoutController extends GetxController {
       var points = payout['amount'];
       var status = payout['status'];
       var id = payout['_id'];
+      var paymentEmail = payout['paymentEmail'];
       var approved = payout['approved'];
       var rejected = payout['rejected'];
       var date = DateTime.parse(payout['date']);
@@ -67,6 +68,7 @@ class PayoutController extends GetxController {
         amount: amount,
         points: points,
         status: status,
+        paymentEmail: paymentEmail,
         id: id,
         approved: approved,
         rejected: rejected,

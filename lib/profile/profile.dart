@@ -16,6 +16,7 @@ import 'package:genrevibes/ads/facebook_ads.dart';
 import 'package:genrevibes/ads/unity_ads.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:genrevibes/services/internet_access.dart';
+import 'contact_us.dart';
 //import 'package:genrevibes/main.dart';
 
 class Profile extends StatelessWidget {
@@ -355,6 +356,22 @@ class EarnMore extends StatelessWidget {
                 size: 25.0,
               ),
               title: new Text('Enter Referral Code'),
+            ),
+          ),
+          GestureDetector(
+            onTap: () => pushNewScreen(
+              context,
+              screen: ContactUs(),
+              withNavBar: false, // OPTIONAL VALUE. True by default.
+              //pageTransitionAnimation: PageTransitionAnimation.cupertino,
+            ),
+            child: new ListTile(
+              leading: Icon(
+                Icons.mail,
+                color: Colors.grey,
+                size: 25.0,
+              ),
+              title: new Text('Contant Us'),
             ),
           ),
           GestureDetector(

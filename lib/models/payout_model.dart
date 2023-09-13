@@ -1,6 +1,7 @@
 class Payout {
   String id;
   String status;
+  String paymentEmail;
   int amount;
   int points;
   bool approved;
@@ -10,6 +11,7 @@ class Payout {
   Payout({
     this.id,
     this.status,
+    this.paymentEmail,
     this.amount,
     this.points,
     this.approved,

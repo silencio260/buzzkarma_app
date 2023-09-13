@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
           //password: _loginData.password,
           id: _loginData.password,
           image: "https://i.imgur.com/tdi3NGa.png",
-          authProvider: 'google',
+          authProvider: 'Regular',
           proxy: userData['proxy'],
           country: userData['country'],
           ioscode: userData['ioscode'],

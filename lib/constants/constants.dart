@@ -29,7 +29,8 @@ const ktabLabelColor = Colors.white;
 
 Map<String, String> kheaders = {"x-auth-token": kTempToken};
 
-const kshareUrl = kserverUrl; //'https://buzzbreak.news/';
+const kshareUrl =
+    'https://play.google.com/store/apps/details?id=com.buzzkarma.rewards'; //kserverUrl; //'https://buzzbreak.news/';
 const kfbUrl = 'https://facebook.com/101123275307099/';
 //'http://f05e538d7551.ngrok.io'; http://192.168.43.49:5000
 const kserverUrl =
